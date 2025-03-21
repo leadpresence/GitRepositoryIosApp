@@ -2,45 +2,40 @@
 //  CacheManager.swift
 //  GitReposApp
 //
-//  Created by Kehinde Akeredolu on 21/03/2025.
+//  Created by Chibueze  Felix on 21/03/2025.
 //
 
+ 
+// CacheService.swift - Handles local data caching
 import Foundation
 
-final class CacheManager {
-    static let shared = CacheManager()
+class CacheService {
+    static let shared = CacheService()
+    private let userDefaults = UserDefaults.standard
+    private let repositoriesKey = "cachedRepositories"
     
-    private let cacheDirectory: URL
-    private let fileManager = FileManager.default
-    
-    private init() {
-        cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("github_repositories")
-        
-        try? fileManager.createDirectory(at: cacheDirectory, withIntermediateDirectories: true)
-    }
+    private init() {}
     
     func cacheRepositories(_ repositories: [Repository]) {
-        let cacheFile = cacheDirectory.appendingPathComponent("repositories.json")
-        
         do {
-            let data = try JSONEncoder().encode(repositories)
-            try data.write(to: cacheFile)
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(repositories)
+            userDefaults.set(data, forKey: repositoriesKey)
         } catch {
             print("Error caching repositories: \(error)")
         }
     }
     
-    func loadCachedRepositories() -> [Repository]? {
-        let cacheFile = cacheDirectory.appendingPathComponent("repositories.json")
-        
-        guard fileManager.fileExists(atPath: cacheFile.path) else { return nil }
+    func getCachedRepositories() -> [Repository]? {
+        guard let data = userDefaults.data(forKey: repositoriesKey) else {
+            return nil
+        }
         
         do {
-            let data = try Data(contentsOf: cacheFile)
-            return try JSONDecoder().decode([Repository].self, from: data)
+            let decoder = JSONDecoder()
+            return try decoder.decode([Repository].self, from: data)
         } catch {
-            print("Error loading cached repositories: \(error)")
+            print("Error retrieving cached repositories: \(error)")
             return nil
         }
     }
