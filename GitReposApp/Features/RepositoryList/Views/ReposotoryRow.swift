@@ -46,15 +46,10 @@ struct RepositoryRow: View {
                     .font(.caption)
                     .foregroundColor(.gray)
                 
-//                if let language = repository.language {
-//                    Text(language)
-//                        .font(.caption)
-//                        .padding(.horizontal, 8)
-//                        .padding(.vertical, 2)
-//                        .background(Color.blue.opacity(0.2))
-//                        .cornerRadius(4)
-//                }
+
             }
+            
+           
         }
         .padding(.vertical, 8)
     }
