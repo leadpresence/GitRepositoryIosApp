@@ -2,7 +2,7 @@
 //  NetworkManager.swift
 //  GitReposApp
 //
-//  Created by Kehinde Akeredolu on 21/03/2025.
+//  Created by Chibueze Felix Akeredolu on 21/03/2025.
 //
 import Foundation
 class NetworkService {
