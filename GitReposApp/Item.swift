@@ -2,7 +2,7 @@
 //  Item.swift
 //  GitReposApp
 //
-//  Created by Kehinde Akeredolu on 21/03/2025.
+//  Created by chibueze Felix 21/03/2025.
 //
 
 import Foundation

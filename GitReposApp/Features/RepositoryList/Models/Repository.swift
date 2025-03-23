@@ -148,3 +148,10 @@ struct User: Codable, Equatable {
         case siteAdmin = "site_admin"
     }
 }
+
+
+struct Employee: Identifiable {
+ let id = UUID() // Unique identifier for each employee
+ let name: String
+ let occupation: String
+}

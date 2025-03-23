@@ -2,7 +2,7 @@
 //  GitReposAppUITests.swift
 //  GitReposAppUITests
 //
-//  Created by Kehinde Akeredolu on 21/03/2025.
+//  Created bychibueze Felix on 21/03/2025.
 //
 
 import XCTest

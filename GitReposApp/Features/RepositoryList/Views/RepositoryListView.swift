@@ -17,10 +17,6 @@ struct RepositoryListView: View {
         NavigationView {
             ZStack {
                 
-//                Table(viewModel.repositories){
-//                    TableColumn("Name", value:\.fullName)
-//                    TableColumn("Descrption", value: \.blobsUrl)
-//                }
                 List {
                     ForEach(viewModel.repositories) { repository in
                         RepositoryRow(repository: repository)
